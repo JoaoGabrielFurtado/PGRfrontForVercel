@@ -1,0 +1,12 @@
+# Ficheiros de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ficheiros de configuração de editores
+.vscode/
+.idea/
+
+# Pacotes e dependências (Caso você decida usar npm no futuro)
+node_modules/
+package-lock.json
+npm-debug.log

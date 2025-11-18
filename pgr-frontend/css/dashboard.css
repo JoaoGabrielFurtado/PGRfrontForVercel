@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Teko:wght@700&display=swap');
+
+/* Paleta de Cores - Tema Escuro */
+:root {
+    --cor-fundo: #111827;
+    --cor-card: #1f2937;
+    --cor-texto-principal: #e5e7eb;
+    --cor-texto-secundario: #9ca3af;
+    --cor-borda: #374151;
+    --cor-principal-azul: #0ea5e9;
+    --cor-principal-amarelo: #f59e0b;
+}
+
+/* Reset básico e estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+/* --- ESTILOS DO CABEÇALHO PRINCIPAL --- */
+.main-header {
+    background-color: var(--cor-card);
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.header-logo {
+    font-family: 'Teko', sans-serif;
+    font-size: 4rem;
+    font-style: italic;
+    letter-spacing: 3px; 
+    line-height: 1;
+    padding-right: 10px; 
+    background: linear-gradient(to top, var(--cor-principal-amarelo) 10%, var(--cor-principal-azul) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.user-greeting {
+    margin-right: 1.5rem;
+    color: var(--cor-texto-secundario);
+    font-weight: 500;
+}
+
+/* --- ESTILOS DO CONTEÚDO DO DASHBOARD --- */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 1.5rem;
+}
+
+.dashboard-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Estilos dos Cards (Dashboard e Página de Treino) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card, .exercicio-item {
+    background-color: var(--cor-card);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid var(--cor-borda);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card { cursor: pointer; }
+.card:hover, .exercicio-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--cor-principal-azul);
+}
+.card h3, .exercicio-info h4 {
+    margin-bottom: 0.5rem;
+    color: var(--cor-texto-principal);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.card p, .exercicio-info p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* Página de Treino */
+.treino-header {
+    background-color: var(--cor-card);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+.treino-header h2 { margin: 0 0 0.5rem; font-size: 2rem; }
+.treino-header p { color: var(--cor-texto-secundario); font-size: 1rem; }
+.exercicio-item { margin-bottom: 1rem; }
+.exercicio-details { display: flex; justify-content: space-between; align-items: center; }
+.exercicio-actions .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+
+/* --- ESTILOS PARA MODAL --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(17, 24, 39, 0.9);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content {
+    background-color: var(--cor-card);
+    padding: 2rem; border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+    width: 90%; max-width: 500px;
+}
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem; border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 1rem;
+}
+.modal-header h3 { font-size: 1.4rem; }
+.close-button {
+    background: none; border: none; font-size: 2rem;
+    cursor: pointer; color: var(--cor-texto-secundario);
+}
+.modal-actions { margin-top: 1.5rem; text-align: right; }
+
+/* --- ESTILOS GENÉRICOS DE FORMULÁRIO E BOTÕES --- */
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 0.8rem 1rem;
+    border: 1px solid var(--cor-borda); border-radius: 6px;
+    font-size: 1rem; font-family: 'Inter', sans-serif;
+}
+.btn {
+    display: inline-block; padding: 0.8rem 1.5rem;
+    border: none; border-radius: 6px; font-size: 1rem;
+    font-weight: 500; cursor: pointer; text-decoration: none;
+    text-align: center; transition: background-color 0.2s ease;
+}
+.btn-primary { background-color: var(--cor-principal-azul); color: #fff; }
+.btn-primary:hover { background-color: #0c84b6; }
+.btn-secondary { background-color: var(--cor-texto-secundario); color: #fff; }
+.btn-secondary:hover { background-color: #4b5563; }
+.btn-danger { background-color: #ef4444; color: #fff; }
+.btn-danger:hover { background-color: #dc2626; }
+
+/* --- NOVO: Estilos para Formulários no Modal --- */
+.modal-content .form-group label {
+    color: var(--cor-texto-secundario);
+}
+
+.modal-content .form-group input,
+.modal-content .form-group select,
+.modal-content .form-group textarea {
+    background-color: var(--cor-fundo); /* Fundo escuro */
+    color: var(--cor-texto-principal); /* Texto claro */
+    border: 1px solid var(--cor-borda);
+}
+
+.modal-content .form-group select {
+    /* Aparência customizada para o select */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.7rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.registro-form {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--cor-borda);
+    display: grid;
+    grid-template-columns: 1fr 2fr auto; /* Carga | Observações | Botão */
+    gap: 1rem;
+    align-items: flex-end; /* Alinha os itens na base */
+}
+
+.registro-form .form-group {
+    margin-bottom: 0;
+}
+
+.registro-form label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--cor-texto-secundario);
+}
+
+.cargas-inputs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.5rem;
+}
+
+
+/* HISTORICO */
+
+.historico-list {
+    margin-top: 2rem;
+    max-height: 250px;
+    overflow-y: auto; 
+}
+
+.historico-item {
+    background-color: var(--cor-fundo);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--cor-principal-azul);
+}
+
+.historico-item p {
+    margin: 0;
+    color: var(--cor-texto-principal);
+}
+
+.historico-item .data {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.historico-item .cargas {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+}
+
+.historico-item .observacoes {
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.historico-item-actions {
+    margin-top: 0.75rem;
+    text-align: right;
+}
+
+/* --- ADICIONADO: Estilos para o Botão Flutuante e Modal de Informações --- */
+
+/* O botão flutuante no canto da tela */
+.floating-info-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--cor-principal-azul);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: transform 0.2s ease;
+}
+
+.floating-info-btn:hover {
+    transform: scale(1.1);
+}
+
+.floating-info-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* O tooltip que aparece ao passar o mouse */
+.floating-info-btn .tooltip-text {
+    visibility: hidden;
+    width: 300px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posição acima do botão */
+    right: 50%;
+    margin-right: -150px; /* Metade da largura para centralizar */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+.floating-info-btn:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilos para o conteúdo do modal de informações */
+.about-modal-body {
+    text-align: center;
+}
+
+.about-modal-body p {
+    color: var(--cor-texto-secundario);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-2px);
+}
+
+.social-links a.linkedin {
+    background-color: #0077b5;
+}
+
+.social-links a.github {
+    background-color: #333;
+}
+
+.social-links a svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
