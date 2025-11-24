@@ -1,4 +1,4 @@
-const apiUrl = 'https://localhost:7290'; // Ajuste a porta se necessário
+//const apiUrl = 'https://localhost:7290'; // Ajuste a porta se necessário
 
 document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('jwtToken');

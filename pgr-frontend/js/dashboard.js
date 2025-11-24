@@ -1,5 +1,5 @@
 // Endereço base da nossa API. Lembre-se de ajustar a porta se necessário.
-const urlApi = 'https://localhost:7290'; 
+//const urlApi = 'https://localhost:7290'; 
 
 // O script começa a rodar assim que o HTML da página estiver completamente carregado.
 document.addEventListener('DOMContentLoaded', () => {

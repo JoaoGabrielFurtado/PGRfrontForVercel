@@ -1,5 +1,5 @@
 // Define o endereço da API.
-const urlApi = 'https://localhost:7290';
+//const urlApi = 'https://localhost:7290';
 
 //formulários página HTML 
 const formularioLogin = document.getElementById('login-form');
