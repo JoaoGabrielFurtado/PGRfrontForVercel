@@ -71,7 +71,7 @@ async function fetchTreinoDetails(token, treinoId) {
     const exerciciosListEl = document.getElementById('exercicios-list');
 
     try {
-        const response = await fetch(`${apiUrl}/api/treinos/${treinoId}`, {
+        const response = await fetch(`${urlApi}/api/treinos/${treinoId}`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -95,7 +95,7 @@ async function fetchTreinoDetails(token, treinoId) {
 async function fetchAvailableExercises(token) {
     const selectElement = document.getElementById('exercicio-select');
     try {
-        const response = await fetch(`${apiUrl}/api/exercicios`, {
+        const response = await fetch(`${urlApi}/api/exercicios`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -125,7 +125,7 @@ async function handleAddExercicioSubmit(event, token, treinoId) {
     };
 
     try {
-        const response = await fetch(`${apiUrl}/api/treinos/${treinoId}/exercicios`, {
+        const response = await fetch(`${urlApi}/api/treinos/${treinoId}/exercicios`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify(dto)
@@ -141,7 +141,7 @@ async function handleAddExercicioSubmit(event, token, treinoId) {
 async function handleRemoveExercicio(token, treinoId, exercicioId) {
     if (!confirm('Tem a certeza de que quer remover este exercício do plano?')) return;
     try {
-        const response = await fetch(`${apiUrl}/api/treinos/${treinoId}/exercicios/${exercicioId}`, {
+        const response = await fetch(`${urlApi}/api/treinos/${treinoId}/exercicios/${exercicioId}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -183,7 +183,7 @@ async function handleRegistroSubmit(event, token) {
     };
 
     try {
-        const response = await fetch(`${apiUrl}/api/registrosdetreino`, {
+        const response = await fetch(`${urlApi}/api/registrosdetreino`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify(dto)
@@ -214,7 +214,7 @@ async function handleShowHistorico(token, treinoExercicioId, exercicioNome) {
     historicoModal.classList.add('active');
 
     try {
-        const response = await fetch(`${apiUrl}/api/registrosdetreino?treinoExercicioId=${treinoExercicioId}`, {
+        const response = await fetch(`${urlApi}/api/registrosdetreino?treinoExercicioId=${treinoExercicioId}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -237,7 +237,7 @@ async function handleDeleteRegistro(token, registroId, treinoExercicioId, exerci
     }
 
     try {
-        const response = await fetch(`${apiUrl}/api/registrosdetreino/${registroId}`, {
+        const response = await fetch(`${urlApi}/api/registrosdetreino/${registroId}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
